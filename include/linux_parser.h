@@ -40,13 +40,20 @@ enum CPUStates {
   kGuest_,
   kGuestNice_
 };
-std::vector<std::string> CpuUtilization();
-long Jiffies();
-long ActiveJiffies();
+
+std::vector<long> CpuUtilization();
 long ActiveJiffies(int pid);
-long IdleJiffies();
 
 // Processes
+// proc stat fields
+enum ProcPidStats {
+  kUTime_ = 14,
+  kSTime_,
+  kCUTime_,
+  kCSTime_,
+  kStartTime_ = 22
+};
+
 std::string Command(int pid);
 std::string Ram(int pid);
 std::string Uid(int pid);
